@@ -1,0 +1,4 @@
+Offline retrieval fixture note.
+
+This file mentions Flutter, accessibility, local indexing, and semantic search.
+It is useful for testing text ingestion and keyword ranking.
