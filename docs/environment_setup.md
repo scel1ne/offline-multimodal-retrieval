@@ -7,9 +7,8 @@ Machine: macOS, Apple Silicon
 ## Purpose
 
 This report validates that the Week 1 development environment can support the
-planned offline, accessible, multimodal retrieval application. It documents the
-toolchain required for future implementation work without submitting the full
-application source code in the Week 1 repository.
+offline, accessible, multimodal retrieval application. It documents the
+toolchain required for implementation work and reproducible local setup.
 
 ## Required Environment
 
@@ -32,18 +31,18 @@ application source code in the Week 1 repository.
 The following checks were completed during Week 1:
 
 - Flutter SDK and bundled Dart are available on the local machine.
-- Chroma CLI can be invoked locally for future vector-store validation.
+- Chroma CLI can be invoked locally for vector-store validation.
 - CMake is available for native build/test work.
 - `pypdfium2` imports successfully for PDF extraction experiments.
 - Apache Tika app/server JARs are available for document parsing validation.
 - A local Java runtime is available for Tika execution.
-- BERT/MobileCLIP model asset requirements are documented for later weeks.
+- BERT/MobileCLIP model asset requirements are documented.
 - The repository has a `.gitignore` policy to avoid committing large generated
   artifacts, model binaries, build outputs, local caches, and release bundles.
 
 ## Reproducibility Checklist
 
-For a fresh machine, future implementation weeks should:
+For a fresh machine, setup should:
 
 1. Install or download Flutter SDK.
 2. Run `flutter doctor` and resolve required desktop build warnings.

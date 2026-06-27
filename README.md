@@ -16,7 +16,7 @@ dataset planning, and risk management.
 - Validate the intended development environment: Flutter SDK, TensorFlow Lite,
   Git, Chroma DB, PDF/document parsing tools, and open-source dependencies.
 - Curate a small local validation fixture set and document external datasets
-  needed for future validation.
+  for validation.
 - Complete the initial risk assessment and mitigation plan.
 
 ## Deliverables
@@ -31,9 +31,3 @@ dataset planning, and risk management.
 - Accessibility review: `docs/accessibility_report.md`
 - Open-source compliance review: `docs/oss_compliance.md`
 - Technical design notes: `docs/technical_design.md`
-
-## Notes
-
-The complete application implementation is intentionally not included in this
-Week 1 submission. Later weeks should add production source code, automated
-tests, model integration, and release artifacts according to the project plan.
