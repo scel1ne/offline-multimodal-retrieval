@@ -28,7 +28,3 @@ flutter:
   uses-material-design: true
   assets:
     - assets/tokenizer/vocab.txt
-    - assets/models/bert_text_encoder.tflite
-    - assets/models/mobileclip_s0_image.mlpackage/Manifest.json
-    - assets/models/mobileclip_s0_image.mlpackage/Data/com.apple.CoreML/model.mlmodel
-    - assets/models/mobileclip_s0_image.mlpackage/Data/com.apple.CoreML/weights/weight.bin
