@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Celine Retrieval · Web</title>
+    <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%237c3aed'/><stop offset='1' stop-color='%233b82f6'/></linearGradient></defs><rect rx='14' width='64' height='64' fill='url(%23g)'/><path d='M21 28h22M21 36h14' stroke='white' stroke-width='4' stroke-linecap='round'/><circle cx='44' cy='36' r='6' stroke='white' stroke-width='4' fill='none'/></svg>" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-theme="light">
+    <header class="app-bar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M10 4a6 6 0 1 1-3.65 10.76l-3.7 3.7a1 1 0 0 1-1.42-1.42l3.7-3.7A6 6 0 0 1 10 4Zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" fill="currentColor"/></svg>
+        </div>
+        <div class="brand-text">
+          <h1>Celine Retrieval</h1>
+          <span class="badge">Web · Offline</span>
+        </div>
+      </div>
+      <div class="toolbar">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.42-1.42M4.92 19.08l1.42-1.42m0-11.32L4.92 4.92m14.16 14.16-1.42-1.42M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z" fill="currentColor"/></svg>
+        </button>
+        <button id="contrast-toggle" class="icon-btn" type="button" aria-label="Toggle high contrast" title="Toggle high contrast">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20Z" fill="currentColor"/></svg>
+        </button>
+        <label class="text-scale" title="Text size">
+          <span>A</span>
+          <input id="text-scale" type="range" min="0.9" max="1.4" step="0.05" value="1" />
+          <span class="big-a">A</span>
+        </label>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel" id="library-panel" aria-label="Library">
+        <div class="panel-head">
+          <div class="panel-title">
+            <span class="panel-icon" data-tone="primary">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </span>
+            <h2>Library</h2>
+          </div>
+          <span id="library-count" class="pill" hidden>0 files</span>
+        </div>
+
+        <button id="dropzone" class="dropzone" type="button">
+          <div class="dropzone-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 4v12m0 0-4-4m4 4 4-4M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="dropzone-title">Drop files here</div>
+          <div class="dropzone-sub">or click to choose · PDF, DOCX, TXT, MD, images</div>
+          <input id="file-input" type="file" multiple accept=".txt,.md,.csv,.json,.html,.htm,.xml,.pdf,.docx,.png,.jpg,.jpeg,.gif,.bmp,.webp" hidden />
+        </button>
+
+        <div class="actions">
+          <button id="choose-btn" class="btn primary" type="button">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            Choose files
+          </button>
+          <button id="export-btn" class="btn" type="button" disabled>
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Export
+          </button>
+          <button id="import-btn" class="btn" type="button">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 21V9m0 0-4 4m4-4 4 4M5 3h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Import
+          </button>
+          <button id="clear-btn" class="btn ghost" type="button" disabled>
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 7h14M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m-7 0v12a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Clear
+          </button>
+          <input id="import-input" type="file" accept="application/json" hidden />
+        </div>
+
+        <div class="status">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v5m0 3h.01" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span id="status-text">No files indexed yet.</span>
+        </div>
+
+        <div id="progress" class="progress" hidden>
+          <div class="progress-bar"></div>
+        </div>
+
+        <ul id="library-list" class="record-list" aria-label="Indexed files"></ul>
+      </section>
+
+      <section class="panel" id="search-panel" aria-label="Search">
+        <div class="panel-head">
+          <div class="panel-title">
+            <span class="panel-icon" data-tone="secondary">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M11 19a8 8 0 1 1 5.3-14 8 8 0 0 1-5.3 14Zm10 2-4.35-4.35" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <h2>Search</h2>
+          </div>
+        </div>
+
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M11 19a8 8 0 1 1 5.3-14 8 8 0 0 1-5.3 14Zm10 2-4.35-4.35" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input id="query" type="search" placeholder="Search across all your files..." autocomplete="off" />
+          <button id="clear-query" class="icon-btn small" type="button" aria-label="Clear query" hidden>
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <button id="search-btn" class="btn primary" type="button">Search</button>
+        </div>
+
+        <div class="filters">
+          <div class="chip-group" role="tablist" aria-label="Type filter">
+            <button class="chip active" data-type="all" type="button" role="tab" aria-selected="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M3 13h8V3H3v10Zm10 8h8V11h-8v10ZM3 21h8v-6H3v6Zm10-18v6h8V3h-8Z" fill="currentColor"/></svg>
+              All
+            </button>
+            <button class="chip" data-type="text" type="button" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 4h14v3H5V4Zm0 5h10v3H5V9Zm0 5h14v3H5v-3Zm0 5h7v3H5v-3Z" fill="currentColor"/></svg>
+              Text
+            </button>
+            <button class="chip" data-type="document" type="button" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Zm8 1.5V8h4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              Documents
+            </button>
+            <button class="chip" data-type="image" type="button" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="10" r="1.6" fill="currentColor"/><path d="m4 18 5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              Images
+            </button>
+          </div>
+          <div class="chip-group small" role="tablist" aria-label="Sort">
+            <button class="chip small active" data-sort="relevance" type="button" role="tab" aria-selected="true">
+              <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="m12 3 2 4 4 .6-3 2.8.7 4.1L12 12.6 8.3 14.5 9 10.4 6 7.6 10 7Z" fill="currentColor"/></svg>
+              Relevance
+            </button>
+            <button class="chip small" data-sort="name" type="button" role="tab" aria-selected="false">Name</button>
+            <button class="chip small" data-sort="date" type="button" role="tab" aria-selected="false">Newest</button>
+          </div>
+        </div>
+
+        <div class="results-head">
+          <h3 id="results-summary">No indexed files</h3>
+        </div>
+
+        <div id="results" class="results"></div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Offline-first · Your files never leave this browser.</span>
+      <span class="kbd-hint"><kbd>Tab</kbd> to navigate · <kbd>Enter</kbd> to expand a result</span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.min.mjs" type="module"></script>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
