@@ -56,6 +56,11 @@ app.*.map.json
 /.tooling/
 /.home/
 /.pub-cache/
+/.downloads/
+/.flutter_releases_macos.json
+
+# Local vector database scratch data
+/.chroma-test/
 
 # Logs
 *.log
